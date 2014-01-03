@@ -1,6 +1,6 @@
 package moteur;
 
-public interface CommandTimerInterf {
+public interface CommandInterf {
 
 	public Boolean executer();
 }

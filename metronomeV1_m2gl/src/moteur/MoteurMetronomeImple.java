@@ -1,7 +1,8 @@
 package moteur;
 
-import outillageExterne.Horloge;
-import outillageExterne.HorlogeImpl;
+import controleur.ControleurMetronome;
+import outillageExterne.HorlogeInterf;
+import outillageExterne.HorlogeImple;
 
 public class MoteurMetronomeImple implements MoteurMetronomeInterf {
 
@@ -11,19 +12,26 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf {
 	
 	private int cmptLocalTemp = 0;
 	
-	Horloge horloge;
-	CommandTimerInterf commandePeriod;
+	HorlogeInterf horloge;
+	private ControleurMetronome ctrl;
+	
+	CommandInterf commandePeriod;
+	CommandInterf marqueTemps;
+	CommandInterf marqueMes;
+	
 	
 	public MoteurMetronomeImple(){
 		System.out.println("Demarrage du moteur !!!");
 		
 		//init des valeurs par defaut
-		this.enMarche = false;
+		this.enMarche = true;
 		this.nbTempsParMesure = 4;
 		this.tempo = 30; // toute les 2 secondes
 		
-		horloge = new HorlogeImpl();
-		commandePeriod = new CommandTimerImple(this);
+		ctrl = new ControleurMetronome(this);
+		
+		horloge = new HorlogeImple();
+		commandePeriod = new CmdImp_topSynchro(this);
 		
 		horloge.activerPeriodiquement(commandePeriod, 60 / (float) this.tempo);
 	}
@@ -35,6 +43,12 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf {
 	public void setEnMarche(Boolean val) {
 		
 		this.enMarche = val;
+		if(this.enMarche){
+			horloge.arretHorloge();
+			horloge.activerPeriodiquement(commandePeriod, 60 / (float) this.tempo);
+		}else{
+			horloge.arretHorloge();
+		}
 	}
 
 	@Override
@@ -45,6 +59,7 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf {
 
 	@Override
 	public void setNbTempsParMesure(Integer nbTemps) {
+		
 		
 		this.nbTempsParMesure = nbTemps;
 	}
@@ -73,13 +88,27 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf {
 	@Override
 	public boolean marquagePeriodique() {
 		
-		System.out.print("Top...");
+		System.out.print(" Tps... ");
+		this.marqueTemps.executer();
+		
 		cmptLocalTemp++;
-		if(cmptLocalTemp % 5 == 0){
-			System.out.println("  -5-");
+		if(cmptLocalTemp % this.nbTempsParMesure == 0){
+			System.out.println(" et mesure !!!");
+			this.marqueMes.executer();
 		}
 		
 		return true;
+	}
+
+
+
+
+	@Override
+	public void setCommandesCtrl(CommandInterf cmdTemps, CommandInterf cmdMesure) {
+		
+		this.marqueTemps = cmdTemps;
+		this.marqueMes = cmdMesure;
+		
 	}
 
 	

@@ -13,4 +13,6 @@ public interface MoteurMetronomeInterf {
 	
 	public boolean marquagePeriodique();
 	
+	public void setCommandesCtrl(CommandInterf cmdTemps, CommandInterf cmdMesure);
+	
 }

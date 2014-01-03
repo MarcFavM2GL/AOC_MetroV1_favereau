@@ -2,15 +2,15 @@ package outillageExterne;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import moteur.CommandTimerInterf;
+import moteur.CommandInterf;
 
-public class HorlogeImpl implements Horloge {
+public class HorlogeImple implements HorlogeInterf {
 
-	private CommandTimerInterf cmdPeriodique;	
+	private CommandInterf cmdPeriodique;	
 	private Timer horlogeTimerPeriod;
 	
 	@Override
-	public void activerPeriodiquement(CommandTimerInterf cmd, Float periodeSec) {
+	public void activerPeriodiquement(CommandInterf cmd, Float periodeSec) {
 		
 		
 		
@@ -29,7 +29,7 @@ public class HorlogeImpl implements Horloge {
 	}
 
 	@Override
-	public void activerApresDelai(CommandTimerInterf cmd, Float delaiMilliSec) {
+	public void activerApresDelai(CommandInterf cmd, Float delaiMilliSec) {
 		
 
 	}
