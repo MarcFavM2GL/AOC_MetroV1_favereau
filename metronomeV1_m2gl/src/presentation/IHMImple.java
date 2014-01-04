@@ -36,10 +36,7 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	private final int TEMPOMIN = 1;
 	
 	private ControleurMetronome monControleur;
-	
-	private Integer tempo;
-	private Integer tempsParMesure;
-	private Boolean miseEnMarche;
+	private Boolean estEnMarche = false;
 	
 	private List<ObservateurInterf> observateurs = new ArrayList<ObservateurInterf>();
 	
@@ -69,7 +66,7 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		getContentPane().setBackground(new Color(255, 170, 55));
 		
 		initIHM();
-		
+		setMarche(false);
 		pack();
 		setLocation(50, 50);
 		Dimension tailleFen = new Dimension(500, 350);
@@ -94,14 +91,13 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		molette = new JSlider();
 		molette.setMaximum(TEMPOMAX);
 		molette.setMinimum(TEMPOMIN);
-		molette.setValue(monControleur.getMoteur().getTempo());
+		//molette.setValue(monControleur.getMoteur().getTempo());
 		molette.setBackground(getContentPane().getBackground());
 		molette.addChangeListener(new ChangeListener() {
 			
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
 				afficheMolette.setText(String.valueOf(molette.getValue()));
-				tempo = molette.getValue();
 				notification();
 			}
 		});
@@ -138,6 +134,7 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 				Integer val = Integer.decode(infosMesure.getText());
 				val--;
 				infosMesure.setText(val.toString());
+				notification();
 			}
 		});
 	    
@@ -151,7 +148,7 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		infosMesure.setOpaque(true);
 		infosMesure.setBackground(getContentPane().getBackground());
 		infosMesure.setHorizontalAlignment(JLabel.CENTER);
-		infosMesure.setText(monControleur.getMoteur().getNbTempsParMesure().toString());
+		//infosMesure.setText(monControleur.getMoteur().getNbTempsParMesure().toString());
 		
 		btnPlus = new JButton("+"){
 	        {
@@ -167,6 +164,7 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 				Integer val = Integer.decode(infosMesure.getText());
 				val++;
 				infosMesure.setText(val.toString());
+				notification();
 			}
 		});		
 	    
@@ -224,23 +222,16 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 							
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnStart.setEnabled(false);
+				btnStop.setEnabled(true);
+				estEnMarche = true;
+				gestionVoyantOnOff();
+				notification();
 			}
 		});
 		
 		
-		infosMiseEnMarche = new JLabel();
-		Border bordureInfosOn = BorderFactory.createLineBorder(Color.green, 3);
-		Border bordureInfosOff = BorderFactory.createLineBorder(Color.red, 3);
-		
-		
-		
-		if(monControleur.getMoteur().getEnMarche()){
-			infosMiseEnMarche.setText("  ON  ");
-			infosMiseEnMarche.setBorder(bordureInfosOn);
-		}else{
-			infosMiseEnMarche.setText("  OFF  ");
-			infosMiseEnMarche.setBorder(bordureInfosOff);
-		}
+		infosMiseEnMarche = new JLabel();		
 		infosMiseEnMarche.setOpaque(true);
 		infosMiseEnMarche.setBackground(getContentPane().getBackground());
 		infosMiseEnMarche.setHorizontalAlignment(JLabel.CENTER);
@@ -252,10 +243,15 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		        setPreferredSize(getSize());
 		    }
 		};
-		btnStart.addActionListener(new ActionListener() {
+		btnStop.addActionListener(new ActionListener() {
 							
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnStart.setEnabled(true);
+				btnStop.setEnabled(false);
+				estEnMarche = false;
+				gestionVoyantOnOff();
+				notification();
 			}
 		});
 		
@@ -272,6 +268,19 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		
 	}
 	
+	public void gestionVoyantOnOff(){
+		
+		Border bordureInfosOn = BorderFactory.createLineBorder(Color.green, 3);
+		Border bordureInfosOff = BorderFactory.createLineBorder(Color.red, 3);
+		
+		if(estEnMarche){
+			infosMiseEnMarche.setText("  ON  ");
+			infosMiseEnMarche.setBorder(bordureInfosOn);
+		}else{
+			infosMiseEnMarche.setText("  OFF  ");
+			infosMiseEnMarche.setBorder(bordureInfosOff);
+		}
+	}
 	
 	@Override
 	public void flasherLed1(Integer tpsMilliSec) {
@@ -294,7 +303,7 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	@Override
 	public Integer getPositionMolette() {
 		
-		return tempo;
+		return molette.getValue();
 	}
 
 	@Override
@@ -303,6 +312,37 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		molette.setValue(position);
 	}
 
+	@Override
+	public Boolean getMarche() {
+		
+		return estEnMarche;
+	}
+
+	@Override
+	public void setMarche(Boolean val) {
+		
+		if(val){
+			btnStart.doClick();
+		}else{
+			btnStop.doClick();
+		}
+	}
+
+	@Override
+	public Integer getTempsParMesure() {
+
+		return Integer.decode(infosMesure.getText());
+	}
+
+	@Override
+	public void setTempsParMesure(Integer val) {
+		
+		infosMesure.setText(val.toString());
+	}
+	
+	
+	
+	
 	@Override
 	public void ajoutObservateur(ObservateurInterf obs) {
 		
@@ -319,7 +359,7 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	public void notification() {
 		
 		for(ObservateurInterf observ:observateurs){
-			observ.actualise();
+			observ.actualiseModifIHM();
 		}
 	}
 

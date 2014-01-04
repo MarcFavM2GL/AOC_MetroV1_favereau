@@ -37,7 +37,9 @@ public class HorlogeImple implements HorlogeInterf {
 	@Override
 	public void arretHorloge() {
 		
-		horlogeTimerPeriod.cancel();
+		if(horlogeTimerPeriod != null){
+			horlogeTimerPeriod.cancel();
+		}
 	}
 
 }

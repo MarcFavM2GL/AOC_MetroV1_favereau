@@ -2,5 +2,6 @@ package utilGenerale;
 
 public interface ObservateurInterf {
 
-	public void actualise();
+	public void actualiseModifIHM();
+	public void actualiseModifMM();
 }

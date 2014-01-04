@@ -8,4 +8,10 @@ public interface IHMInterf {
 	
 	Integer getPositionMolette();
 	void setPositionMolette(Integer position);
+	
+	Boolean getMarche();
+	void setMarche(Boolean val);
+	
+	Integer getTempsParMesure();
+	void setTempsParMesure(Integer val);
 }
