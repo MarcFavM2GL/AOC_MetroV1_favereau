@@ -1,11 +1,13 @@
 package controleur;
 
+import presentation.IHMImple;
 import moteur.CommandInterf;
 import moteur.MoteurMetronomeInterf;
 
 public class ControleurMetronome implements GestionEvtsInterf {
 
 	MoteurMetronomeInterf moteur;
+	IHMImple presentation;
 	
 	public ControleurMetronome(MoteurMetronomeInterf mot) {
 
@@ -15,7 +17,7 @@ public class ControleurMetronome implements GestionEvtsInterf {
 		CommandInterf cmdMesure = new CmdImpl_marqueMes(this);
 		
 		this.moteur.setCommandesCtrl(cmdTemps, cmdMesure);
-
+		this.presentation = new IHMImple(this);
 		
 	}
 	
@@ -35,4 +37,7 @@ public class ControleurMetronome implements GestionEvtsInterf {
 		return true;
 	}
 
+	public MoteurMetronomeInterf getMoteur(){
+		return moteur;
+	}
 }

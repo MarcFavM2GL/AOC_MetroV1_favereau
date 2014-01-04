@@ -7,7 +7,7 @@ public class DemarrageMetronome {
 
 		
 		System.out.println("DEMARRAGE !!!");
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		MoteurMetronomeInterf moteur = new MoteurMetronomeImple();
 
 		/*Thread.sleep(15000);
