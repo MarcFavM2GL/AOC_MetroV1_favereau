@@ -10,6 +10,8 @@ import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -24,9 +26,11 @@ import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import utilGenerale.ObservateurInterf;
+import utilGenerale.SujetObservableInterf;
 import controleur.ControleurMetronome;
 
-public class IHMImple extends JFrame implements IHMInterf {
+public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf {
 
 	private final int TEMPOMAX = 500;
 	private final int TEMPOMIN = 1;
@@ -36,6 +40,8 @@ public class IHMImple extends JFrame implements IHMInterf {
 	private Integer tempo;
 	private Integer tempsParMesure;
 	private Boolean miseEnMarche;
+	
+	private List<ObservateurInterf> observateurs = new ArrayList<ObservateurInterf>();
 	
 	// Composants graphiques
 	JPanel pnlTempo, pnlLeds, pnlMesure, pnlOnOff;
@@ -95,7 +101,8 @@ public class IHMImple extends JFrame implements IHMInterf {
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
 				afficheMolette.setText(String.valueOf(molette.getValue()));
-				
+				tempo = molette.getValue();
+				notification();
 			}
 		});
 		
@@ -217,7 +224,6 @@ public class IHMImple extends JFrame implements IHMInterf {
 							
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
 			}
 		});
 		
@@ -250,7 +256,6 @@ public class IHMImple extends JFrame implements IHMInterf {
 							
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
 			}
 		});
 		
@@ -287,15 +292,35 @@ public class IHMImple extends JFrame implements IHMInterf {
 	}
 
 	@Override
-	public float getPositionMolette() {
-		// TODO Auto-generated method stub
-		return 0;
+	public Integer getPositionMolette() {
+		
+		return tempo;
 	}
 
 	@Override
-	public void setPositionMolette(float val) {
-		// TODO Auto-generated method stub
+	public void setPositionMolette(Integer position) {
 		
+		molette.setValue(position);
+	}
+
+	@Override
+	public void ajoutObservateur(ObservateurInterf obs) {
+		
+		observateurs.add(obs);
+	}
+
+	@Override
+	public void suppObservateur(ObservateurInterf obs) {
+
+		observateurs.remove(obs);
+	}
+
+	@Override
+	public void notification() {
+		
+		for(ObservateurInterf observ:observateurs){
+			observ.actualise();
+		}
 	}
 
 }

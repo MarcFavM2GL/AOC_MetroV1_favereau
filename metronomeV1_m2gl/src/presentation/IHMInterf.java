@@ -6,6 +6,6 @@ public interface IHMInterf {
 	void flasherLed2(Integer tpsMilliSec);
 	void emettreSon();
 	
-	float getPositionMolette();
-	void setPositionMolette(float val);
+	Integer getPositionMolette();
+	void setPositionMolette(Integer position);
 }

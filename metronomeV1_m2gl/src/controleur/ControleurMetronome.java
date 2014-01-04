@@ -1,10 +1,11 @@
 package controleur;
 
 import presentation.IHMImple;
+import utilGenerale.ObservateurInterf;
 import moteur.CommandInterf;
 import moteur.MoteurMetronomeInterf;
 
-public class ControleurMetronome implements GestionEvtsInterf {
+public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf {
 
 	MoteurMetronomeInterf moteur;
 	IHMImple presentation;
@@ -18,6 +19,7 @@ public class ControleurMetronome implements GestionEvtsInterf {
 		
 		this.moteur.setCommandesCtrl(cmdTemps, cmdMesure);
 		this.presentation = new IHMImple(this);
+		this.presentation.ajoutObservateur(this);
 		
 	}
 	
@@ -39,5 +41,12 @@ public class ControleurMetronome implements GestionEvtsInterf {
 
 	public MoteurMetronomeInterf getMoteur(){
 		return moteur;
+	}
+
+	@Override
+	public void actualise() {
+		Integer val = presentation.getPositionMolette();
+		System.out.println("CONTROLEUR : Modif de la molette : " + val);
+		
 	}
 }
