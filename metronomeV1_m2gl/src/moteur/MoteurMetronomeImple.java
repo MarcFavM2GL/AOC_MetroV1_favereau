@@ -33,6 +33,7 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 	CommandInterf marqueMes;
 	
 	
+	
 	public MoteurMetronomeImple(){
 		System.out.println("Demarrage du moteur !!!");
 		

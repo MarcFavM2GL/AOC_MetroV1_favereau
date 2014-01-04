@@ -14,7 +14,7 @@ import moteur.CommandInterf;
 
 public interface HorlogeInterf {
 	
-	public void activerPeriodiquement(CommandInterf cmd, Float periodeSec);
-	public void activerApresDelai(CommandInterf cmd, Float delaiMilliSec);
+	public void activerPeriodiquement(CommandInterf cmd, float periodeSec);
+	public void activerApresDelai(CommandInterf cmd, float delaiMilliSec);
 	public void arretHorloge();
 }

@@ -10,6 +10,7 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 
 	MoteurMetronomeImple moteur;
 	IHMImple presentation;
+	private float dureeAllumageLed = 300; 	// en ms
 	
 	public ControleurMetronome(MoteurMetronomeImple mot) {
 
@@ -29,16 +30,24 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 	public Boolean marquerTemps() {
 
 		// vers IHM flash Led1
-		System.out.print(" Tps... ");
+		presentation.flasherLed1(dureeAllumageLed);
 		
 		return true;
+	}
+
+	public float getDureeAllumageLed() {
+		return dureeAllumageLed;
+	}
+
+	public void setDureeAllumageLed(float dureeAllumageLed) {
+		this.dureeAllumageLed = dureeAllumageLed;
 	}
 
 	@Override
 	public Boolean marquerMesure() {
 
 		// vers IHM flash Led2
-		System.out.println(" et mesure !!!");
+		presentation.flasherLed2(dureeAllumageLed);
 		
 		return true;
 	}
@@ -72,6 +81,7 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 		if(valTempo.compareTo(presentation.getPositionMolette()) != 0){
 			presentation.setPositionMolette(valTempo);
 		}
+		presentation.setInfosTempo(valTempo);
 		
 		Integer valMesure = moteur.getNbTempsParMesure();
 		if(valMesure.compareTo(presentation.getTempsParMesure()) != 0){

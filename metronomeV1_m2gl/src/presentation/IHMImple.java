@@ -26,6 +26,9 @@ import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import outillageExterne.HorlogeImple;
+import outillageExterne.HorlogeInterf;
+import moteur.CommandInterf;
 import utilGenerale.ObservateurInterf;
 import utilGenerale.SujetObservableInterf;
 import controleur.ControleurMetronome;
@@ -54,7 +57,9 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	JButton btnStart, btnStop;
 	JLabel infosMiseEnMarche;
 	
-	
+	CommandInterf eteindreLed1;
+	CommandInterf eteindreLed2;
+	HorlogeInterf horloge;
 	
 	public IHMImple(ControleurMetronome ctrl) {
 		
@@ -74,6 +79,11 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		setSize(tailleFen);
 		setResizable(false);
 		setVisible(true);
+		
+		horloge = new HorlogeImple();
+		
+		eteindreLed1 = new CmdImpl_stopLed(this);
+		eteindreLed2 = new CmdImpl_stopLed(this);
 	}
 	
 	private void initIHM(){
@@ -97,7 +107,7 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 			
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				afficheMolette.setText(String.valueOf(molette.getValue()));
+				
 				notification();
 			}
 		});
@@ -283,20 +293,23 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	}
 	
 	@Override
-	public void flasherLed1(Integer tpsMilliSec) {
+	public void flasherLed1(float tpsMilliSec) {
 		
-		
+		led1.setBackground(Color.red);
+		horloge.activerApresDelai(eteindreLed1, tpsMilliSec);
 	}
 
 	@Override
-	public void flasherLed2(Integer tpsMilliSec) {
-		// TODO Auto-generated method stub
+	public void flasherLed2(float tpsMilliSec) {
 		
+		emettreSon();
+		led2.setBackground(Color.red);
+		horloge.activerApresDelai(eteindreLed2, tpsMilliSec);
 	}
 
 	@Override
 	public void emettreSon() {
-		// TODO Auto-generated method stub
+		java.awt.Toolkit.getDefaultToolkit().beep();
 		
 	}
 
@@ -340,7 +353,11 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		infosMesure.setText(val.toString());
 	}
 	
-	
+	@Override
+	public void setInfosTempo(Integer position) {
+
+		afficheMolette.setText(position.toString());
+	}
 	
 	
 	@Override
@@ -361,6 +378,12 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		for(ObservateurInterf observ:observateurs){
 			observ.actualiseModifIHM();
 		}
+	}
+
+	public void eteindreLesLeds() {
+
+		led1.setBackground(Color.green);
+		led2.setBackground(Color.green);
 	}
 
 }

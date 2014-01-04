@@ -9,10 +9,10 @@ public class HorlogeImple implements HorlogeInterf {
 	private CommandInterf cmdPeriodique;	
 	private Timer horlogeTimerPeriod;
 	
+	private CommandInterf cmdStopLed;	
+	
 	@Override
-	public void activerPeriodiquement(CommandInterf cmd, Float periodeSec) {
-		
-		
+	public void activerPeriodiquement(CommandInterf cmd, float periodeSec) {
 		
 		this.cmdPeriodique = cmd;
 		TimerTask maTache = new TimerTask() {
@@ -29,8 +29,21 @@ public class HorlogeImple implements HorlogeInterf {
 	}
 
 	@Override
-	public void activerApresDelai(CommandInterf cmd, Float delaiMilliSec) {
+	public void activerApresDelai(CommandInterf cmd, float delaiMilliSec) {
 		
+		Timer horlogeDelai;
+		this.cmdStopLed = cmd;
+		TimerTask maTache = new TimerTask() {
+			@Override
+			public void run() {
+				Boolean retourAction;
+				
+				retourAction = cmdStopLed.executer();
+			}
+		};
+		
+		horlogeDelai = new Timer();
+		horlogeDelai.schedule(maTache, (long)delaiMilliSec);
 
 	}
 
