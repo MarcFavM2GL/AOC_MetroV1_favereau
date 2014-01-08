@@ -7,6 +7,8 @@ import moteur.MoteurMetronomeInterf;
 
 import org.junit.Test;
 
+/**
+ */
 public class TestDuMoteur {
 
 	@Test

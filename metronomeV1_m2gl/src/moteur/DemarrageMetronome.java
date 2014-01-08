@@ -1,7 +1,14 @@
 package moteur;
 
+/**
+ */
 public class DemarrageMetronome {
 
+	/**
+	 * Method main.
+	 * @param args String[]
+	 * @throws InterruptedException
+	 */
 	public static void main(String[] args) throws InterruptedException {
 
 

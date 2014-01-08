@@ -33,6 +33,8 @@ import utilGenerale.ObservateurInterf;
 import utilGenerale.SujetObservableInterf;
 import controleur.ControleurMetronome;
 
+/**
+ */
 public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf {
 
 	private final int TEMPOMAX = 500;
@@ -61,6 +63,10 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	CommandInterf eteindreLed2;
 	HorlogeInterf horloge;
 	
+	/**
+	 * Constructor for IHMImple.
+	 * @param ctrl ControleurMetronome
+	 */
 	public IHMImple(ControleurMetronome ctrl) {
 		
 		super();
@@ -292,6 +298,11 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		}
 	}
 	
+	/**
+	 * Method flasherLed1.
+	 * @param tpsMilliSec float
+	 * @see presentation.IHMInterf#flasherLed1(float)
+	 */
 	@Override
 	public void flasherLed1(float tpsMilliSec) {
 		
@@ -299,6 +310,11 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		horloge.activerApresDelai(eteindreLed1, tpsMilliSec);
 	}
 
+	/**
+	 * Method flasherLed2.
+	 * @param tpsMilliSec float
+	 * @see presentation.IHMInterf#flasherLed2(float)
+	 */
 	@Override
 	public void flasherLed2(float tpsMilliSec) {
 		
@@ -307,30 +323,54 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		horloge.activerApresDelai(eteindreLed2, tpsMilliSec);
 	}
 
+	/**
+	 * Method emettreSon.
+	 * @see presentation.IHMInterf#emettreSon()
+	 */
 	@Override
 	public void emettreSon() {
 		java.awt.Toolkit.getDefaultToolkit().beep();
 		
 	}
 
+	/**
+	 * Method getPositionMolette.
+	 * @return Integer
+	 * @see presentation.IHMInterf#getPositionMolette()
+	 */
 	@Override
 	public Integer getPositionMolette() {
 		
 		return molette.getValue();
 	}
 
+	/**
+	 * Method setPositionMolette.
+	 * @param position Integer
+	 * @see presentation.IHMInterf#setPositionMolette(Integer)
+	 */
 	@Override
 	public void setPositionMolette(Integer position) {
 		
 		molette.setValue(position);
 	}
 
+	/**
+	 * Method getMarche.
+	 * @return Boolean
+	 * @see presentation.IHMInterf#getMarche()
+	 */
 	@Override
 	public Boolean getMarche() {
 		
 		return estEnMarche;
 	}
 
+	/**
+	 * Method setMarche.
+	 * @param val Boolean
+	 * @see presentation.IHMInterf#setMarche(Boolean)
+	 */
 	@Override
 	public void setMarche(Boolean val) {
 		
@@ -341,18 +381,33 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 		}
 	}
 
+	/**
+	 * Method getTempsParMesure.
+	 * @return Integer
+	 * @see presentation.IHMInterf#getTempsParMesure()
+	 */
 	@Override
 	public Integer getTempsParMesure() {
 
 		return Integer.decode(infosMesure.getText());
 	}
 
+	/**
+	 * Method setTempsParMesure.
+	 * @param val Integer
+	 * @see presentation.IHMInterf#setTempsParMesure(Integer)
+	 */
 	@Override
 	public void setTempsParMesure(Integer val) {
 		
 		infosMesure.setText(val.toString());
 	}
 	
+	/**
+	 * Method setInfosTempo.
+	 * @param position Integer
+	 * @see presentation.IHMInterf#setInfosTempo(Integer)
+	 */
 	@Override
 	public void setInfosTempo(Integer position) {
 
@@ -360,18 +415,32 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	}
 	
 	
+	/**
+	 * Method ajoutObservateur.
+	 * @param obs ObservateurInterf
+	 * @see utilGenerale.SujetObservableInterf#ajoutObservateur(ObservateurInterf)
+	 */
 	@Override
 	public void ajoutObservateur(ObservateurInterf obs) {
 		
 		observateurs.add(obs);
 	}
 
+	/**
+	 * Method suppObservateur.
+	 * @param obs ObservateurInterf
+	 * @see utilGenerale.SujetObservableInterf#suppObservateur(ObservateurInterf)
+	 */
 	@Override
 	public void suppObservateur(ObservateurInterf obs) {
 
 		observateurs.remove(obs);
 	}
 
+	/**
+	 * Method notification.
+	 * @see utilGenerale.SujetObservableInterf#notification()
+	 */
 	@Override
 	public void notification() {
 		

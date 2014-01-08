@@ -1,6 +1,6 @@
 package controleur;
 
-import presentation.IHMImple;
+import presentation.AdaptateurImple;
 import utilGenerale.ObservateurInterf;
 import moteur.CommandInterf;
 import moteur.MoteurMetronomeImple;
@@ -9,7 +9,7 @@ import moteur.MoteurMetronomeInterf;
 public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf {
 
 	MoteurMetronomeImple moteur;
-	IHMImple presentation;
+	AdaptateurImple presentation;
 	private float dureeAllumageLed = 300; 	// en ms
 	
 	public ControleurMetronome(MoteurMetronomeImple mot) {
@@ -20,7 +20,7 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 		CommandInterf cmdMesure = new CmdImpl_marqueMes(this);
 		
 		this.moteur.setCommandesCtrl(cmdTemps, cmdMesure);
-		this.presentation = new IHMImple(this);
+		this.presentation = new AdaptateurImple(this);
 		
 		this.presentation.ajoutObservateur(this);
 		this.moteur.ajoutObservateur(this);		

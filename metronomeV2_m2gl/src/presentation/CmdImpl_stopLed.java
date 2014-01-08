@@ -4,9 +4,9 @@ import moteur.CommandInterf;
 
 public class CmdImpl_stopLed implements CommandInterf{
 
-	private IHMImple ihm;
+	private AdaptateurImple ihm;
 	
-	public CmdImpl_stopLed(IHMImple ihm) {
+	public CmdImpl_stopLed(AdaptateurImple ihm) {
 		this.ihm = ihm;
 	}
 	

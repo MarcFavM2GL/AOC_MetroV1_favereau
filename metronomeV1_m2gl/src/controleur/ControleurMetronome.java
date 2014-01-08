@@ -6,12 +6,18 @@ import moteur.CommandInterf;
 import moteur.MoteurMetronomeImple;
 import moteur.MoteurMetronomeInterf;
 
+/**
+ */
 public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf {
 
 	MoteurMetronomeImple moteur;
 	IHMImple presentation;
 	private float dureeAllumageLed = 300; 	// en ms
 	
+	/**
+	 * Constructor for ControleurMetronome.
+	 * @param mot MoteurMetronomeImple
+	 */
 	public ControleurMetronome(MoteurMetronomeImple mot) {
 
 		this.moteur = mot;
@@ -26,6 +32,11 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 		this.moteur.ajoutObservateur(this);		
 	}
 	
+	/**
+	 * Method marquerTemps.
+	 * @return Boolean
+	 * @see controleur.GestionEvtsInterf#marquerTemps()
+	 */
 	@Override
 	public Boolean marquerTemps() {
 
@@ -35,14 +46,27 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 		return true;
 	}
 
+	/**
+	 * Method getDureeAllumageLed.
+	 * @return float
+	 */
 	public float getDureeAllumageLed() {
 		return dureeAllumageLed;
 	}
 
+	/**
+	 * Method setDureeAllumageLed.
+	 * @param dureeAllumageLed float
+	 */
 	public void setDureeAllumageLed(float dureeAllumageLed) {
 		this.dureeAllumageLed = dureeAllumageLed;
 	}
 
+	/**
+	 * Method marquerMesure.
+	 * @return Boolean
+	 * @see controleur.GestionEvtsInterf#marquerMesure()
+	 */
 	@Override
 	public Boolean marquerMesure() {
 
@@ -52,11 +76,19 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 		return true;
 	}
 
+	/**
+	 * Method getMoteur.
+	 * @return MoteurMetronomeInterf
+	 */
 	public MoteurMetronomeInterf getMoteur(){
 		return moteur;
 	}
 
 
+	/**
+	 * Method actualiseModifIHM.
+	 * @see utilGenerale.ObservateurInterf#actualiseModifIHM()
+	 */
 	@Override
 	public void actualiseModifIHM() {
 		Integer valTempo = presentation.getPositionMolette();
@@ -74,6 +106,10 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 		
 	}
 
+	/**
+	 * Method actualiseModifMM.
+	 * @see utilGenerale.ObservateurInterf#actualiseModifMM()
+	 */
 	@Override
 	public void actualiseModifMM() {
 		

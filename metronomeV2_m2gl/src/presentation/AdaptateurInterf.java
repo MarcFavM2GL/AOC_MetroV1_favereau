@@ -1,6 +1,6 @@
 package presentation;
 
-public interface IHMInterf {
+public interface AdaptateurInterf {
 
 	void flasherLed1(float tpsMilliSec);
 	void flasherLed2(float tpsMilliSec);
@@ -15,4 +15,6 @@ public interface IHMInterf {
 	
 	Integer getTempsParMesure();
 	void setTempsParMesure(Integer val);
+	
+	void lireEtatIhmReelle();
 }
