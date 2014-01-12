@@ -83,7 +83,8 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 	 * Method getEnMarche.
 	
 	
-	 * @return Boolean * @see moteur.MoteurMetronomeInterf#getEnMarche() */
+	 * @return Boolean * @see moteur.MoteurMetronomeInterf#getEnMarche() * @see moteur.MoteurMetronomeInterf#getEnMarche()
+	 */
 	@Override
 	public Boolean getEnMarche() {
 		
@@ -106,7 +107,8 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 	 * Method getNbTempsParMesure.
 	
 	
-	 * @return Integer * @see moteur.MoteurMetronomeInterf#getNbTempsParMesure() */
+	 * @return Integer * @see moteur.MoteurMetronomeInterf#getNbTempsParMesure() * @see moteur.MoteurMetronomeInterf#getNbTempsParMesure()
+	 */
 	@Override
 	public Integer getNbTempsParMesure() {
 		
@@ -134,7 +136,8 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 	 * Method getTempo.
 	
 	
-	 * @return Integer * @see moteur.MoteurMetronomeInterf#getTempo() */
+	 * @return Integer * @see moteur.MoteurMetronomeInterf#getTempo() * @see moteur.MoteurMetronomeInterf#getTempo()
+	 */
 	@Override
 	public Integer getTempo() {
 		
@@ -145,7 +148,8 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 	 * Method marquagePeriodique.
 	
 	
-	 * @return boolean * @see moteur.MoteurMetronomeInterf#marquagePeriodique() */
+	 * @return boolean * @see moteur.MoteurMetronomeInterf#marquagePeriodique() * @see moteur.MoteurMetronomeInterf#marquagePeriodique()
+	 */
 	@Override
 	public boolean marquagePeriodique() {
 		

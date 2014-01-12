@@ -1,6 +1,8 @@
 package presentation;
 
 /**
+ * @author Favereau
+ * @version $Revision: 1.0 $
  */
 public interface IHMInterf {
 
@@ -18,8 +20,8 @@ public interface IHMInterf {
 	
 	/**
 	 * Method getPositionMolette.
-	 * @return Integer
-	 */
+	
+	 * @return Integer */
 	Integer getPositionMolette();
 	/**
 	 * Method setPositionMolette.
@@ -34,8 +36,8 @@ public interface IHMInterf {
 	
 	/**
 	 * Method getMarche.
-	 * @return Boolean
-	 */
+	
+	 * @return Boolean */
 	Boolean getMarche();
 	/**
 	 * Method setMarche.
@@ -45,8 +47,8 @@ public interface IHMInterf {
 	
 	/**
 	 * Method getTempsParMesure.
-	 * @return Integer
-	 */
+	
+	 * @return Integer */
 	Integer getTempsParMesure();
 	/**
 	 * Method setTempsParMesure.

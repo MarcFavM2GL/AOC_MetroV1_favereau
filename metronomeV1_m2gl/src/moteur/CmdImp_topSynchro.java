@@ -1,6 +1,8 @@
 package moteur;
 
 /**
+ * @author Favereau
+ * @version $Revision: 1.0 $
  */
 public class CmdImp_topSynchro implements CommandInterf {
 
@@ -17,9 +19,9 @@ public class CmdImp_topSynchro implements CommandInterf {
 
 	/**
 	 * Method executer.
-	 * @return Boolean
-	 * @see moteur.CommandInterf#executer()
-	 */
+	
+	
+	 * @return Boolean * @see moteur.CommandInterf#executer() */
 	@Override
 	public Boolean executer() {
 

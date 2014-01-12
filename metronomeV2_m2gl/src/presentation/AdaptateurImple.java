@@ -30,6 +30,8 @@ import utilGenerale.ObservateurInterf;
 import utilGenerale.SujetObservableInterf;
 import controleur.ControleurMetronome;
 
+/**
+ */
 public class AdaptateurImple implements AdaptateurInterf, SujetObservableInterf {
 
 	private final float PERIODE_LECTURE_IHM = (float) 0.1;
@@ -48,6 +50,10 @@ public class AdaptateurImple implements AdaptateurInterf, SujetObservableInterf 
 	
 	Materiel materielReel;
 	
+	/**
+	 * Constructor for AdaptateurImple.
+	 * @param ctrl ControleurMetronome
+	 */
 	public AdaptateurImple(ControleurMetronome ctrl) {
 		
 		super();
@@ -66,6 +72,11 @@ public class AdaptateurImple implements AdaptateurInterf, SujetObservableInterf 
 	}
 	
 	
+	/**
+	 * Method flasherLed1.
+	 * @param tpsMilliSec float
+	 * @see presentation.AdaptateurInterf#flasherLed1(float)
+	 */
 	@Override
 	public void flasherLed1(float tpsMilliSec) {
 		
@@ -73,6 +84,11 @@ public class AdaptateurImple implements AdaptateurInterf, SujetObservableInterf 
 		horloge.activerApresDelai(eteindreLed1, tpsMilliSec);
 	}
 
+	/**
+	 * Method flasherLed2.
+	 * @param tpsMilliSec float
+	 * @see presentation.AdaptateurInterf#flasherLed2(float)
+	 */
 	@Override
 	public void flasherLed2(float tpsMilliSec) {
 		
@@ -81,17 +97,31 @@ public class AdaptateurImple implements AdaptateurInterf, SujetObservableInterf 
 		horloge.activerApresDelai(eteindreLed2, tpsMilliSec);
 	}
 
+	/**
+	 * Method emettreSon.
+	 * @see presentation.AdaptateurInterf#emettreSon()
+	 */
 	@Override
 	public void emettreSon() {
 		Materiel.getEmetteurSonore().emettreClic();
 	}
 
+	/**
+	 * Method getPositionMolette.
+	 * @return Integer
+	 * @see presentation.AdaptateurInterf#getPositionMolette()
+	 */
 	@Override
 	public Integer getPositionMolette() {
 		
 		return tempo;
 	}
 
+	/**
+	 * Method setPositionMolette.
+	 * @param position Integer
+	 * @see presentation.AdaptateurInterf#setPositionMolette(Integer)
+	 */
 	@Override
 	public void setPositionMolette(Integer position) {
 		
@@ -102,12 +132,22 @@ public class AdaptateurImple implements AdaptateurInterf, SujetObservableInterf 
 		System.out.println("par le logiciel est IMPOSSIBLE !!!");
 	}
 
+	/**
+	 * Method getMarche.
+	 * @return Boolean
+	 * @see presentation.AdaptateurInterf#getMarche()
+	 */
 	@Override
 	public Boolean getMarche() {
 		
 		return estEnMarche;
 	}
 
+	/**
+	 * Method setMarche.
+	 * @param val Boolean
+	 * @see presentation.AdaptateurInterf#setMarche(Boolean)
+	 */
 	@Override
 	public void setMarche(Boolean val) {
 		
@@ -117,12 +157,22 @@ public class AdaptateurImple implements AdaptateurInterf, SujetObservableInterf 
 		System.out.println("START/STOP par le logiciel est IMPOSSIBLE !!!");
 	}
 
+	/**
+	 * Method getTempsParMesure.
+	 * @return Integer
+	 * @see presentation.AdaptateurInterf#getTempsParMesure()
+	 */
 	@Override
 	public Integer getTempsParMesure() {
 
 		return nbTemps;
 	}
 
+	/**
+	 * Method setTempsParMesure.
+	 * @param val Integer
+	 * @see presentation.AdaptateurInterf#setTempsParMesure(Integer)
+	 */
 	@Override
 	public void setTempsParMesure(Integer val) {
 		
@@ -132,24 +182,43 @@ public class AdaptateurImple implements AdaptateurInterf, SujetObservableInterf 
 		System.out.println("INCR/DECR par le logiciel est IMPOSSIBLE !!!");
 	}
 	
+	/**
+	 * Method setInfosTempo.
+	 * @param position Integer
+	 * @see presentation.AdaptateurInterf#setInfosTempo(Integer)
+	 */
 	@Override
 	public void setInfosTempo(Integer position) {
 
 	}
 	
 	
+	/**
+	 * Method ajoutObservateur.
+	 * @param obs ObservateurInterf
+	 * @see utilGenerale.SujetObservableInterf#ajoutObservateur(ObservateurInterf)
+	 */
 	@Override
 	public void ajoutObservateur(ObservateurInterf obs) {
 		
 		observateurs.add(obs);
 	}
 
+	/**
+	 * Method suppObservateur.
+	 * @param obs ObservateurInterf
+	 * @see utilGenerale.SujetObservableInterf#suppObservateur(ObservateurInterf)
+	 */
 	@Override
 	public void suppObservateur(ObservateurInterf obs) {
 
 		observateurs.remove(obs);
 	}
 
+	/**
+	 * Method notification.
+	 * @see utilGenerale.SujetObservableInterf#notification()
+	 */
 	@Override
 	public void notification() {
 		
@@ -165,6 +234,10 @@ public class AdaptateurImple implements AdaptateurInterf, SujetObservableInterf 
 	}
 
 
+	/**
+	 * Method lireEtatIhmReelle.
+	 * @see presentation.AdaptateurInterf#lireEtatIhmReelle()
+	 */
 	@Override
 	public void lireEtatIhmReelle() {
 		Integer tempoTmp;

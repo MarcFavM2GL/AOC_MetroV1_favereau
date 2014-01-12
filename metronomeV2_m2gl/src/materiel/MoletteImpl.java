@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JSlider;
 
+/**
+ */
 public class MoletteImpl extends JSlider implements Molette{
 
 	public MoletteImpl(){
@@ -16,6 +18,11 @@ public class MoletteImpl extends JSlider implements Molette{
 	}
 	
 	
+	/**
+	 * Method position.
+	 * @return int
+	 * @see materiel.Molette#position()
+	 */
 	@Override
 	public int position() {
 		

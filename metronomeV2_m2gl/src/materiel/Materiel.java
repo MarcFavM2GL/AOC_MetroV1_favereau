@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 
+/**
+ */
 public class Materiel extends JFrame {
 
 	JPanel pnlTempo, pnlAffich, pnlClavier;
@@ -82,18 +84,34 @@ public class Materiel extends JFrame {
 		
 	}
 	
+	/**
+	 * Method getClavier.
+	 * @return Clavier
+	 */
 	public static Clavier getClavier(){
 		return clavier;
 	}
 	
+	/**
+	 * Method getAfficheur.
+	 * @return Afficheur
+	 */
 	public static Afficheur getAfficheur(){
 		return afficheur;
 	}
 	
+	/**
+	 * Method getEmetteurSonore.
+	 * @return EmetteurSonore
+	 */
 	public static EmetteurSonore getEmetteurSonore(){
 		return emetteurSonore;
 	}
 	
+	/**
+	 * Method getMolette.
+	 * @return Molette
+	 */
 	public static Molette getMolette(){
 		return molette;
 	}

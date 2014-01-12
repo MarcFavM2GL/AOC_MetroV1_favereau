@@ -7,6 +7,8 @@ import moteur.MoteurMetronomeImple;
 import moteur.MoteurMetronomeInterf;
 
 /**
+ * @author Favereau
+ * @version $Revision: 1.0 $
  */
 public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf {
 
@@ -34,9 +36,9 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 	
 	/**
 	 * Method marquerTemps.
-	 * @return Boolean
-	 * @see controleur.GestionEvtsInterf#marquerTemps()
-	 */
+	
+	
+	 * @return Boolean * @see controleur.GestionEvtsInterf#marquerTemps() */
 	@Override
 	public Boolean marquerTemps() {
 
@@ -48,8 +50,8 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 
 	/**
 	 * Method getDureeAllumageLed.
-	 * @return float
-	 */
+	
+	 * @return float */
 	public float getDureeAllumageLed() {
 		return dureeAllumageLed;
 	}
@@ -64,9 +66,9 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 
 	/**
 	 * Method marquerMesure.
-	 * @return Boolean
-	 * @see controleur.GestionEvtsInterf#marquerMesure()
-	 */
+	
+	
+	 * @return Boolean * @see controleur.GestionEvtsInterf#marquerMesure() */
 	@Override
 	public Boolean marquerMesure() {
 
@@ -78,8 +80,8 @@ public class ControleurMetronome implements GestionEvtsInterf, ObservateurInterf
 
 	/**
 	 * Method getMoteur.
-	 * @return MoteurMetronomeInterf
-	 */
+	
+	 * @return MoteurMetronomeInterf */
 	public MoteurMetronomeInterf getMoteur(){
 		return moteur;
 	}

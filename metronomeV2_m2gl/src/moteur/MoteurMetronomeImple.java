@@ -9,6 +9,8 @@ import outillageExterne.HorlogeImple;
 import utilGenerale.ObservateurInterf;
 import utilGenerale.SujetObservableInterf;
 
+/**
+ */
 public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObservableInterf {
 
 	private final int MESUREMAX = 7;
@@ -58,6 +60,11 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 	
 	
 	
+	/**
+	 * Method setEnMarche.
+	 * @param val Boolean
+	 * @see moteur.MoteurMetronomeInterf#setEnMarche(Boolean)
+	 */
 	@Override
 	public void setEnMarche(Boolean val) {
 		
@@ -70,12 +77,22 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 		}
 	}
 
+	/**
+	 * Method getEnMarche.
+	 * @return Boolean
+	 * @see moteur.MoteurMetronomeInterf#getEnMarche()
+	 */
 	@Override
 	public Boolean getEnMarche() {
 		
 		return this.enMarche;
 	}
 
+	/**
+	 * Method setNbTempsParMesure.
+	 * @param nbTemps Integer
+	 * @see moteur.MoteurMetronomeInterf#setNbTempsParMesure(Integer)
+	 */
 	@Override
 	public void setNbTempsParMesure(Integer nbTemps) {
 			
@@ -83,12 +100,22 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 			notification();
 	}
 
+	/**
+	 * Method getNbTempsParMesure.
+	 * @return Integer
+	 * @see moteur.MoteurMetronomeInterf#getNbTempsParMesure()
+	 */
 	@Override
 	public Integer getNbTempsParMesure() {
 		
 		return this.nbTempsParMesure;
 	}
 
+	/**
+	 * Method setTempo.
+	 * @param tempoBpm Integer
+	 * @see moteur.MoteurMetronomeInterf#setTempo(Integer)
+	 */
 	@Override
 	public void setTempo(Integer tempoBpm) {
 		
@@ -101,12 +128,22 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 		notification();
 	}
 
+	/**
+	 * Method getTempo.
+	 * @return Integer
+	 * @see moteur.MoteurMetronomeInterf#getTempo()
+	 */
 	@Override
 	public Integer getTempo() {
 		
 		return this.tempo;
 	}
 
+	/**
+	 * Method marquagePeriodique.
+	 * @return boolean
+	 * @see moteur.MoteurMetronomeInterf#marquagePeriodique()
+	 */
 	@Override
 	public boolean marquagePeriodique() {
 		
@@ -124,6 +161,12 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 
 
 
+	/**
+	 * Method setCommandesCtrl.
+	 * @param cmdTemps CommandInterf
+	 * @param cmdMesure CommandInterf
+	 * @see moteur.MoteurMetronomeInterf#setCommandesCtrl(CommandInterf, CommandInterf)
+	 */
 	@Override
 	public void setCommandesCtrl(CommandInterf cmdTemps, CommandInterf cmdMesure) {
 		
@@ -135,6 +178,11 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 
 
 
+	/**
+	 * Method ajoutObservateur.
+	 * @param obs ObservateurInterf
+	 * @see utilGenerale.SujetObservableInterf#ajoutObservateur(ObservateurInterf)
+	 */
 	@Override
 	public void ajoutObservateur(ObservateurInterf obs) {
 		
@@ -144,12 +192,21 @@ public class MoteurMetronomeImple implements MoteurMetronomeInterf, SujetObserva
 
 
 
+	/**
+	 * Method suppObservateur.
+	 * @param obs ObservateurInterf
+	 * @see utilGenerale.SujetObservableInterf#suppObservateur(ObservateurInterf)
+	 */
 	@Override
 	public void suppObservateur(ObservateurInterf obs) {
 		
 		observateurs.remove(obs);
 	}
 
+	/**
+	 * Method notification.
+	 * @see utilGenerale.SujetObservableInterf#notification()
+	 */
 	@Override
 	public void notification() {
 		for(ObservateurInterf observ:observateurs){

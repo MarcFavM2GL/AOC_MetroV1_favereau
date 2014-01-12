@@ -1,6 +1,8 @@
 package moteur;
 
 /**
+ * @author Favereau
+ * @version $Revision: 1.0 $
  */
 public interface MoteurMetronomeInterf {
 
@@ -11,8 +13,8 @@ public interface MoteurMetronomeInterf {
 	public void setEnMarche(Boolean val);
 	/**
 	 * Method getEnMarche.
-	 * @return Boolean
-	 */
+	
+	 * @return Boolean */
 	public Boolean getEnMarche();
 	
 	/**
@@ -22,8 +24,8 @@ public interface MoteurMetronomeInterf {
 	public void setNbTempsParMesure(Integer nbTemps);
 	/**
 	 * Method getNbTempsParMesure.
-	 * @return Integer
-	 */
+	
+	 * @return Integer */
 	public Integer getNbTempsParMesure();
 	
 	/**
@@ -33,14 +35,14 @@ public interface MoteurMetronomeInterf {
 	public void setTempo(Integer tempoBpm);
 	/**
 	 * Method getTempo.
-	 * @return Integer
-	 */
+	
+	 * @return Integer */
 	public Integer getTempo();
 	
 	/**
 	 * Method marquagePeriodique.
-	 * @return boolean
-	 */
+	
+	 * @return boolean */
 	public boolean marquagePeriodique();
 	
 	/**

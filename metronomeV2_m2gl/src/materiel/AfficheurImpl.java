@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+/**
+ */
 public class AfficheurImpl extends JPanel implements Afficheur{
 
 	JLabel led1, led2, afficheMolette;
@@ -68,6 +70,11 @@ public class AfficheurImpl extends JPanel implements Afficheur{
 	
 	
 	
+	/**
+	 * Method allumeLed.
+	 * @param numLed int
+	 * @see materiel.Afficheur#allumeLed(int)
+	 */
 	@Override
 	public void allumeLed(int numLed) {
 		
@@ -85,6 +92,11 @@ public class AfficheurImpl extends JPanel implements Afficheur{
 		}	
 	}
 
+	/**
+	 * Method eteindreLed.
+	 * @param numLed int
+	 * @see materiel.Afficheur#eteindreLed(int)
+	 */
 	@Override
 	public void eteindreLed(int numLed) {
 
@@ -103,6 +115,11 @@ public class AfficheurImpl extends JPanel implements Afficheur{
 		
 	}
 
+	/**
+	 * Method afficherTempo.
+	 * @param valeurTempo int
+	 * @see materiel.Afficheur#afficherTempo(int)
+	 */
 	@Override
 	public void afficherTempo(int valeurTempo) {
 

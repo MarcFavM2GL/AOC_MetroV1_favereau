@@ -3,6 +3,8 @@ package controleur;
 import moteur.CommandInterf;
 
 /**
+ * @author Favereau
+ * @version $Revision: 1.0 $
  */
 public class CmdImpl_marqueMes implements CommandInterf {
 
@@ -18,9 +20,9 @@ public class CmdImpl_marqueMes implements CommandInterf {
 	
 	/**
 	 * Method executer.
-	 * @return Boolean
-	 * @see moteur.CommandInterf#executer()
-	 */
+	
+	
+	 * @return Boolean * @see moteur.CommandInterf#executer() */
 	@Override
 	public Boolean executer() {
 

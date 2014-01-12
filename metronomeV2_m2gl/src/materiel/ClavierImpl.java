@@ -10,6 +10,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ */
 public class ClavierImpl extends JPanel implements Clavier {
 
 	JButton btnPlus, btnMoins, btnStart, btnStop;
@@ -95,6 +97,12 @@ public class ClavierImpl extends JPanel implements Clavier {
 	
 	
 	
+	/**
+	 * Method touchePressee.
+	 * @param i int
+	 * @return boolean
+	 * @see materiel.Clavier#touchePressee(int)
+	 */
 	@Override
 	public boolean touchePressee(int i) {
 		// #1 >>> START

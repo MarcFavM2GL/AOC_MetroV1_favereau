@@ -4,6 +4,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import moteur.CommandInterf;
 
+/**
+ */
 public class HorlogeImple implements HorlogeInterf {
 
 	private CommandInterf cmdPeriodique;	
@@ -11,6 +13,12 @@ public class HorlogeImple implements HorlogeInterf {
 	
 	private CommandInterf cmdStopLed;	
 	
+	/**
+	 * Method activerPeriodiquement.
+	 * @param cmd CommandInterf
+	 * @param periodeSec float
+	 * @see outillageExterne.HorlogeInterf#activerPeriodiquement(CommandInterf, float)
+	 */
 	@Override
 	public void activerPeriodiquement(CommandInterf cmd, float periodeSec) {
 		
@@ -28,6 +36,12 @@ public class HorlogeImple implements HorlogeInterf {
 		horlogeTimerPeriod.schedule(maTache, 0, ((long) (periodeSec * 1000)));
 	}
 
+	/**
+	 * Method activerApresDelai.
+	 * @param cmd CommandInterf
+	 * @param delaiMilliSec float
+	 * @see outillageExterne.HorlogeInterf#activerApresDelai(CommandInterf, float)
+	 */
 	@Override
 	public void activerApresDelai(CommandInterf cmd, float delaiMilliSec) {
 		
@@ -47,6 +61,10 @@ public class HorlogeImple implements HorlogeInterf {
 
 	}
 
+	/**
+	 * Method arretHorloge.
+	 * @see outillageExterne.HorlogeInterf#arretHorloge()
+	 */
 	@Override
 	public void arretHorloge() {
 		

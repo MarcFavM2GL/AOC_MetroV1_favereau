@@ -34,6 +34,8 @@ import utilGenerale.SujetObservableInterf;
 import controleur.ControleurMetronome;
 
 /**
+ * @author Favereau
+ * @version $Revision: 1.0 $
  */
 public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf {
 
@@ -301,8 +303,8 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	/**
 	 * Method flasherLed1.
 	 * @param tpsMilliSec float
-	 * @see presentation.IHMInterf#flasherLed1(float)
-	 */
+	
+	 * @see presentation.IHMInterf#flasherLed1(float) */
 	@Override
 	public void flasherLed1(float tpsMilliSec) {
 		
@@ -313,8 +315,8 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	/**
 	 * Method flasherLed2.
 	 * @param tpsMilliSec float
-	 * @see presentation.IHMInterf#flasherLed2(float)
-	 */
+	
+	 * @see presentation.IHMInterf#flasherLed2(float) */
 	@Override
 	public void flasherLed2(float tpsMilliSec) {
 		
@@ -335,9 +337,9 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 
 	/**
 	 * Method getPositionMolette.
-	 * @return Integer
-	 * @see presentation.IHMInterf#getPositionMolette()
-	 */
+	
+	
+	 * @return Integer * @see presentation.IHMInterf#getPositionMolette() */
 	@Override
 	public Integer getPositionMolette() {
 		
@@ -347,8 +349,8 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	/**
 	 * Method setPositionMolette.
 	 * @param position Integer
-	 * @see presentation.IHMInterf#setPositionMolette(Integer)
-	 */
+	
+	 * @see presentation.IHMInterf#setPositionMolette(Integer) */
 	@Override
 	public void setPositionMolette(Integer position) {
 		
@@ -357,9 +359,9 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 
 	/**
 	 * Method getMarche.
-	 * @return Boolean
-	 * @see presentation.IHMInterf#getMarche()
-	 */
+	
+	
+	 * @return Boolean * @see presentation.IHMInterf#getMarche() */
 	@Override
 	public Boolean getMarche() {
 		
@@ -369,8 +371,8 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	/**
 	 * Method setMarche.
 	 * @param val Boolean
-	 * @see presentation.IHMInterf#setMarche(Boolean)
-	 */
+	
+	 * @see presentation.IHMInterf#setMarche(Boolean) */
 	@Override
 	public void setMarche(Boolean val) {
 		
@@ -383,9 +385,9 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 
 	/**
 	 * Method getTempsParMesure.
-	 * @return Integer
-	 * @see presentation.IHMInterf#getTempsParMesure()
-	 */
+	
+	
+	 * @return Integer * @see presentation.IHMInterf#getTempsParMesure() */
 	@Override
 	public Integer getTempsParMesure() {
 
@@ -395,8 +397,8 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	/**
 	 * Method setTempsParMesure.
 	 * @param val Integer
-	 * @see presentation.IHMInterf#setTempsParMesure(Integer)
-	 */
+	
+	 * @see presentation.IHMInterf#setTempsParMesure(Integer) */
 	@Override
 	public void setTempsParMesure(Integer val) {
 		
@@ -406,8 +408,8 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	/**
 	 * Method setInfosTempo.
 	 * @param position Integer
-	 * @see presentation.IHMInterf#setInfosTempo(Integer)
-	 */
+	
+	 * @see presentation.IHMInterf#setInfosTempo(Integer) */
 	@Override
 	public void setInfosTempo(Integer position) {
 
@@ -418,8 +420,8 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	/**
 	 * Method ajoutObservateur.
 	 * @param obs ObservateurInterf
-	 * @see utilGenerale.SujetObservableInterf#ajoutObservateur(ObservateurInterf)
-	 */
+	
+	 * @see utilGenerale.SujetObservableInterf#ajoutObservateur(ObservateurInterf) */
 	@Override
 	public void ajoutObservateur(ObservateurInterf obs) {
 		
@@ -429,8 +431,8 @@ public class IHMImple extends JFrame implements IHMInterf, SujetObservableInterf
 	/**
 	 * Method suppObservateur.
 	 * @param obs ObservateurInterf
-	 * @see utilGenerale.SujetObservableInterf#suppObservateur(ObservateurInterf)
-	 */
+	
+	 * @see utilGenerale.SujetObservableInterf#suppObservateur(ObservateurInterf) */
 	@Override
 	public void suppObservateur(ObservateurInterf obs) {
 
